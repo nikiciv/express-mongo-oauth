@@ -8,13 +8,13 @@ const session = require("express-session");
 
 const connectDB = require("./config/db");
 
-// Passport config
-require("./config/passport")(passport);
-
-// Load config
+// Load config file
 dotenv.config({
   path: "./config/config.env",
 });
+
+// Passport config
+require("./config/passport")(passport);
 
 connectDB();
 
@@ -47,6 +47,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Routes
 app.use("/", require("./routes/index"));
+app.use("/auth", require("./routes/auth"));
 
 const PORT = process.env.PORT || 8000;
 
