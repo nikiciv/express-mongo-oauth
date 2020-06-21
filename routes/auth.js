@@ -16,4 +16,12 @@ router.get(
   }
 );
 
+// Logout user
+// @route GET /auth/logout
+router.get("/logout", (req, res) => {
+  // available with passport; once you login there is a logout method on req object
+  req.logout();
+  res.redirect("/dashboard");
+});
+
 module.exports = router;
